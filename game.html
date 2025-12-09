@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shark Quiz</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .quiz-box {
+            background-color: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+        
+        h1 {
+            color: navy;
+        }
+        
+        .question {
+            font-size: 20px;
+            margin: 20px 0;
+            color: darkblue;
+        }
+        
+        button {
+            background-color: navy;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+        }
+        
+        button:hover {
+            background-color: darkblue;
+        }
+        
+        .correct {
+            background-color: green;
+        }
+        
+        .wrong {
+            background-color: red;
+        }
+        
+        #result {
+            font-size: 20px;
+            margin: 20px;
+            display: none;
+        }
+        
+        #next {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-box">
+        <h1>Shark Quiz</h1>
+        <p>Test your shark knowledge!</p>
+        
+        <div id="score">Score: <span id="points">0</span> / 5</div>
+        <br>
+        
+        <div id="question" class="question"></div>
+        <div id="answers"></div>
+        
+        <div id="result"></div>
+        
+        <button id="next">Next Question</button>
+        
+        <br><br>
+        <a href="sharks.html">Back to Sharks</a>
+    </div>
+
+    <script>
+        // Questions
+        var questions = [
+            {
+                q: "How long have sharks been around?",
+                a: ["100 million years", "400 million years", "50 million years"],
+                correct: 1
+            },
+            {
+                q: "What is the largest fish?",
+                a: ["Great White Shark", "Whale Shark", "Tiger Shark"],
+                correct: 1
+            },
+            {
+                q: "How many teeth do sharks lose?",
+                a: ["1,000", "30,000", "5,000"],
+                correct: 1
+            },
+            {
+                q: "Which shark lives 400+ years?",
+                a: ["Great White", "Greenland Shark", "Bull Shark"],
+                correct: 1
+            },
+            {
+                q: "Average shark size?",
+                a: ["3 feet", "5 feet", "10 feet"],
+                correct: 1
+            }
+        ];
+
+        var current = 0;
+        var score = 0;
+
+        // Show question
+        function showQuestion() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('next').style.display = 'none';
+            
+            var q = questions[current];
+            document.getElementById('question').innerHTML = q.q;
+            
+            var html = '';
+            for (var i = 0; i < q.a.length; i++) {
+                html += '<button onclick="checkAnswer(' + i + ')">' + q.a[i] + '</button><br>';
+            }
+            document.getElementById('answers').innerHTML = html;
+        }
+
+        // Check answer
+        function checkAnswer(choice) {
+            var buttons = document.querySelectorAll('button');
+            var correct = questions[current].correct;
+            
+            // Disable all buttons
+            for (var i = 0; i < buttons.length - 1; i++) {
+                buttons[i].disabled = true;
+                if (i === correct) {
+                    buttons[i].className = 'correct';
+                } else if (i === choice) {
+                    buttons[i].className = 'wrong';
+                }
+            }
+            
+            // Show result
+            var result = document.getElementById('result');
+            if (choice === correct) {
+                score++;
+                document.getElementById('points').innerHTML = score;
+                result.innerHTML = 'Correct!';
+                result.style.color = 'green';
+            } else {
+                result.innerHTML = 'Wrong! Correct answer: ' + questions[current].a[correct];
+                result.style.color = 'red';
+            }
+            result.style.display = 'block';
+            document.getElementById('next').style.display = 'inline-block';
+        }
+
+        // Next question
+        document.getElementById('next').onclick = function() {
+            current++;
+            if (current < questions.length) {
+                showQuestion();
+            } else {
+                // Game over
+                document.getElementById('question').innerHTML = 'Quiz Complete!';
+                document.getElementById('answers').innerHTML = '';
+                document.getElementById('result').innerHTML = 'Final Score: ' + score + ' out of ' + questions.length;
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('next').innerHTML = 'Play Again';
+                document.getElementById('next').onclick = function() {
+                    current = 0;
+                    score = 0;
+                    document.getElementById('points').innerHTML = 0;
+                    document.getElementById('next').innerHTML = 'Next Question';
+                    showQuestion();
+                };
+            }
+        };
+
+        // Start game
+        showQuestion();
+    </script>
+
+</body>
+</html>

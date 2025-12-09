@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sharks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Sharks Are Cool!</h1>
+    </div>
+
+    <!-- Links -->
+    <p style="text-align: center; padding: 10px;">
+        <a href="index.html">Home</a> | 
+        <a href="#facts">Jump to Facts</a> | 
+        <a href="game.html">Play Quiz</a>
+    </p>
+
+    <!-- Main Content -->
+    <div class="content">
+        
+        <h2>Why Sharks Matter</h2>
+        <p>Sharks have been around for 400 million years. They keep the ocean healthy.</p>
+        
+        <!-- Image -->
+        <img src="Images/great-white.jpg" alt="Shark" width="500">
+
+        <h2>Types of Sharks</h2>
+        
+        <!-- List in a list -->
+        <ol>
+            <li>Big Sharks
+                <ul>
+                    <li>Great White</li>
+                    <li>Tiger Shark</li>
+                    <li>Bull Shark</li>
+                </ul>
+            </li>
+            <li>Gentle Giants
+                <ul>
+                    <li>Whale Shark</li>
+                    <li>Basking Shark</li>
+                </ul>
+            </li>
+            <li>Deep Sea Sharks
+                <ul>
+                    <li>Goblin Shark</li>
+                    <li>Greenland Shark</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2>Watch a Shark Video</h2>
+        
+        <!-- YouTube Video -->
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/4HGNqFdaD34"></iframe>
+
+        <!-- Anchor Target -->
+        <h2 id="facts">Cool Shark Facts</h2>
+        <div class="facts">
+            <ul>
+                <li>Sharks are older than trees</li>
+                <li>They can smell one drop of blood in a huge pool</li>
+                <li>Greenland sharks live over 400 years</li>
+                <li>Sharks lose 30,000 teeth in their life</li>
+            </ul>
+        </div>
+
+        <h2>Shark Data</h2>
+        <p>This chart shows shark attack data from around the world:</p>
+        
+        <!-- Requirement: Live Tableau visualization -->
+         <div class='tableauPlaceholder' id='viz1765176540217' style='position: relative'>
+            <noscript>
+                <a href='#'><img alt='Dashboard ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;QW&#47;QWM7TH5SC&#47;1_rss.png' style='border: none' /></a>
+                </noscript>
+                <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' />
+                <param name='path' value='shared&#47;QWM7TH5SC' /> 
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;QW&#47;QWM7TH5SC&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+                </object>
+                </div>               
+                <script type='text/javascript'>
+                 var divElement = document.getElementById('viz1765176540217');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='340px';vizElement.style.maxWidth='800px';vizElement.style.width='100%';vizElement.style.height='827px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);           
+        </script>
+    </div>
+</body>
+</html>
